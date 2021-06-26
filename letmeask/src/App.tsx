@@ -1,13 +1,21 @@
-import {Button} from './components/Button'
-function App() {
-  return (
-    <div>
-    <h1>Hello World</h1>
+import { useState } from 'react';
+import {createContext} from 'react'
+import {BrowserRouter, Route} from 'react-router-dom'
+import { Home } from './pages/Home';
+import { NewRoom } from "./pages/NewRoom";
 
-      <Button/>
-      <Button/>
-      <Button/>
-    </div>
+export const TestContext = createContext({});
+
+function App() {
+  const [value, setValue] = useState('teste');
+  return (
+    <BrowserRouter>
+      <TestContext.Provider value={{value, setValue}}>
+        <Route path="/" exact component={Home} />
+        <Route path="/rooms/new" component={NewRoom} />
+      </TestContext.Provider>
+    </BrowserRouter>
+    
   );
 }
 

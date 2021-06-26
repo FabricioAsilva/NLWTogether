@@ -1,5 +1,11 @@
-export function Button(){
+import { ButtonHTMLAttributes } from "react"
+
+import '../styles/button.scss';
+
+type BruttonProps = ButtonHTMLAttributes<HTMLButtonElement>;
+
+export function Button(props: BruttonProps){
     return(
-        <button>Clique aqui</button>
+        <button className="button" {...props} />
     )
 }
